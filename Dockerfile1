@@ -1,0 +1,10 @@
+FROM mysql:5.7.18
+ADD backup.sql /tmp/
+RUN /bin/bash -c "/usr/bin/mysqld_safe --skip-grant-tables &" && \
+  sleep 5 && \
+  mysql -u root -e "CREATE DATABASE <mysq_database>" && \
+  mysql -u root <mysq_database> < /tmp/backup.sql
+ENV MYSQL_ROOT_PASSWORD=<root_password>
+ENV MYSQL_USER=<db_user>
+ENV MYSQL_PASSWORD=<user_password>
+ENV MYSQL_DATABASE=<mysql_database>

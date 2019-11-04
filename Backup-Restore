@@ -1,0 +1,8 @@
+# Bakcup --> create dump from mysql container
+
+docker exec CONTAINER /usr/bin/mysqldump -u <USER> -p<PASSWORD> <DATABASE> > backup.sql
+
+
+# Restore --> Restore dump to container
+
+cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u <USER> -p<PASSWORD> <DATABASE>

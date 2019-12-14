@@ -1,5 +1,5 @@
 FROM mysql:5.7.18
-ADD database.sql /docker-entrypoint-initdb.d
+COPY database.sql /docker-entrypoint-initdb.d
 ENV MYSQL_ROOT_PASSWORD=helloworld
 ENV MYSQL_USER=userone
 ENV MYSQL_PASSWORD=useronepassword
